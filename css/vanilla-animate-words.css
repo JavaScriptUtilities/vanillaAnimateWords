@@ -7,12 +7,12 @@
 /*  Reset
 -------------------------- */
 
-.vawjs-wrapper {
-    opacity: 0;
+[data-vawjs-anim] {
+    visibility: hidden;
 }
 
-.vawjs-wrapper[data-vawjs-ready="1"] {
-    opacity: 0.999;
+[data-vawjs-anim][data-vawjs-ready="1"] {
+    visibility: visible;
 }
 
 /* Word
@@ -21,11 +21,15 @@
 .vawjs-word-wrapper {
     display: inline-block;
     overflow: hidden;
+    line-height: inherit;
+    vertical-align: middle;
 }
 
 .vawjs-word {
     display: inline-block;
     padding-right: 0.3em;
+    line-height: inherit;
+    vertical-align: middle;
 }
 
 /* ----------------------------------------------------------

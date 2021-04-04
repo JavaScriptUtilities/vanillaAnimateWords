@@ -1,6 +1,6 @@
 /*
  * Plugin Name: Vanilla Animate Words
- * Version: 0.1.0
+ * Version: 0.2.0
  * Plugin URL: https://github.com/JavaScriptUtilities/vanillaAnimateWords
  * JavaScriptUtilities Vanilla Animate Words may be freely distributed under the MIT license.
  */
@@ -19,6 +19,9 @@ var vanillaAnimateWords = function(el, settings) {
         partDelimiter: '<br>',
         wrapEl: 'SPAN',
         innerEl: 'SPAN',
+        triggerReady: function(el) {
+            el.setAttribute('data-vawjs-ready', '1');
+        },
         partEl: function() {
             return document.createElement('BR');
         }
@@ -36,7 +39,7 @@ var vanillaAnimateWords = function(el, settings) {
     var splitWords = function() {
 
         /* Extract words */
-        var _parts = el.innerHTML.split(_settings.partDelimiter),
+        var _parts = el.innerHTML.trim().split(_settings.partDelimiter),
             _words;
 
         /* Purge element content */
@@ -64,7 +67,6 @@ var vanillaAnimateWords = function(el, settings) {
 
     var readyWords = function() {
         el.style.height = '';
-        el.setAttribute('data-vawjs-ready', '1');
     };
 
     /* ----------------------------------------------------------
@@ -93,9 +95,13 @@ var vanillaAnimateWords = function(el, settings) {
                 _settings[attr] = settings[attr];
             }
         }
+        if (el.getAttribute('data-vawjs-delay')) {
+            _settings.delay = parseInt(el.getAttribute('data-vawjs-delay'), 10) / 1000;
+        }
         prepareWords();
         splitWords();
         readyWords();
+        _settings.triggerReady(el);
     }(settings));
 
     return this;
