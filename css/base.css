@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+/* ----------------------------------------------------------
+  Default style
+---------------------------------------------------------- */
+
+body {
+    box-sizing: border-box;
+    margin: auto;
+    padding: 0 1em 1em;
+    max-width: 600px;
+}
+
+/* ----------------------------------------------------------
+  Helpers
+---------------------------------------------------------- */
+
+script.script-visible {
+    display: block;
+    padding: 0.5em;
+    border: 1px solid #CCC;
+    font-family: monospace;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+    color: #333;
+    background-color: #F0F0F0;
+}

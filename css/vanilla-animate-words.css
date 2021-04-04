@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+/* ----------------------------------------------------------
+  Animations
+---------------------------------------------------------- */
+
+/*  Reset
+-------------------------- */
+
+.vawjs-wrapper {
+    opacity: 0;
+}
+
+.vawjs-wrapper[data-vawjs-ready="1"] {
+    opacity: 0.999;
+}
+
+/* Word
+-------------------------- */
+
+.vawjs-word-wrapper {
+    display: inline-block;
+    overflow: hidden;
+}
+
+.vawjs-word {
+    display: inline-block;
+    padding-right: 0.3em;
+}
+
+/* ----------------------------------------------------------
+  Animations
+---------------------------------------------------------- */
+
+/*  Slide up
+-------------------------- */
+
+[data-vawjs-anim="slideup"] .vawjs-word {
+    opacity: 0;
+    transform: translate3d(0,100%,0);
+}
+
+[data-vawjs-anim="slideup"][data-vawjs-ready="1"] .vawjs-word {
+    animation: vanilla-animate-words-slide-up 0.5s both;
+}
+
+@keyframes vanilla-animate-words-slide-up {
+    from {
+        opacity: 0;
+        transform: translate3d(0,100%,0);
+    }
+
+    to {
+        opacity: 0.999;
+        transform: translate3d(0,0,0);
+    }
+}
+
+/*  Fade in
+-------------------------- */
+
+@keyframes vanilla-animate-words-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.999;
+    }
+}
+
+[data-vawjs-anim="fadein"] .vawjs-word {
+    opacity: 0;
+}
+
+[data-vawjs-anim="fadein"][data-vawjs-ready="1"] .vawjs-word {
+    animation: vanilla-animate-words-fade-in 0.5s both;
+}
