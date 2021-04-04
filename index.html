@@ -4,18 +4,21 @@
         <meta charset="UTF-8" />
         <title>Vanilla Animate Words</title>
         <link rel="stylesheet" type="text/css" href="css/base.css" />
-        <link rel="stylesheet" type="text/css" href="css/vanilla-animate-words.css?v=0.2.0" />
-        <script src="js/vanilla-animate-words.min.js?v=0.2.0"></script>
+        <link rel="stylesheet" type="text/css" href="css/vanilla-animate-words.css?v=0.3.0" />
+        <script src="js/vanilla-animate-words.min.js?v=0.3.0"></script>
         <meta name="viewport" content="width=device-width" />
     </head>
     <body>
         <h1>Vanilla Animate Words</h1>
         <p>A Script To Beautifully Animate Words, helped by CSS</p>
-        <h2>Fade slide</h2>
-        <p data-vawjs-anim="fadein">Here’s to the crazy ones.<br />The <strong>misfits</strong>. The rebels. The troublemakers. The round pegs in the square holes. The ones who see things differently. They’re not fond of rules. And they have no respect for the status quo. You can quote them, disagree with them, glorify or vilify them. About the only thing you can’t do is ignore them. Because they change things. They push the human race forward. And while some may see them as the crazy ones, we see genius. Because the people who are crazy enough to think they can change the world are the ones who do.</p>
-        <h2>Animate slide</h2>
-        <p data-vawjs-anim="slideup">Here’s to the crazy ones.<br />The <strong>misfits</strong>. The rebels. The troublemakers. The round pegs in the square holes. The ones who see things differently. They’re not fond of rules. And they have no respect for the status quo. You can quote them, disagree with them, glorify or vilify them. About the only thing you can’t do is ignore them. Because they change things. They push the human race forward. And while some may see them as the crazy ones, we see genius. Because the people who are crazy enough to think they can change the world are the ones who do.</p>
+        <h2>Fade-in words</h2>
+        <p data-vawjs-anim="fadein">Here’s to the crazy ones.<br />The <strong>misfits.</strong> The rebels. <strong>The troublemakers.</strong> The round pegs in the square holes. The ones who see things differently. They’re not fond of rules. And they have no respect for the status quo. You can quote them, disagree with them, glorify or vilify them. About the only thing you can’t do is ignore them. Because they change things. They push the human race forward. And while some may see them as <em>the crazy ones,</em> we see genius. Because the people who are crazy enough to think they can change the world are the ones who do.</p>
+        <h2>Slide-up words</h2>
+        <p data-vawjs-anim="slideup">Here’s to the crazy ones.<br />The <strong>misfits.</strong> The rebels. <strong>The troublemakers.</strong> The round pegs in the square holes. The ones who see things differently. They’re not fond of rules. And they have no respect for the status quo. You can quote them, disagree with them, glorify or vilify them. About the only thing you can’t do is ignore them. Because they change things. They push the human race forward. And while some may see them as <em>the crazy ones,</em> we see genius. Because the people who are crazy enough to think they can change the world are the ones who do.</p>
         <h2>How to trigger</h2>
+
+<div class="script-visible">&#x3C;p data-vawjs-anim=&#x22;fadein&#x22;&#x3E;Here&#x2019;s to the crazy ones.&#x3C;/p&#x3E;
+&#x3C;p data-vawjs-anim=&#x22;slideup&#x22;&#x3E;Here&#x2019;s to the crazy ones.&#x3C;/p&#x3E; </div>
 <script class="script-visible" autocorrect="off" contenteditable>document.querySelectorAll("[data-vawjs-anim]").forEach(function($item) {
     new vanillaAnimateWords($item);
 });</script>

@@ -1,6 +1,6 @@
 /*
  * Plugin Name: Vanilla Animate Words
- * Version: 0.2.0
+ * Version: 0.3.0
  * Plugin URL: https://github.com/JavaScriptUtilities/vanillaAnimateWords
  * JavaScriptUtilities Vanilla Animate Words may be freely distributed under the MIT license.
  */
@@ -16,14 +16,10 @@ var vanillaAnimateWords = function(el, settings) {
     /* Default settings */
     var _settings = {
         delay: 0.05,
-        partDelimiter: '<br>',
         wrapEl: 'SPAN',
         innerEl: 'SPAN',
         triggerReady: function(el) {
             el.setAttribute('data-vawjs-ready', '1');
-        },
-        partEl: function() {
-            return document.createElement('BR');
         }
     };
 
@@ -39,30 +35,19 @@ var vanillaAnimateWords = function(el, settings) {
     var splitWords = function() {
 
         /* Extract words */
-        var _parts = el.innerHTML.trim().split(_settings.partDelimiter),
-            _words;
+        var _words = splitSpaces(el.innerHTML),
+            _newHTML = '';
 
         /* Purge element content */
         el.innerHTML = '';
 
         /* Extract words from parts */
-        var documentFragment = document.createDocumentFragment();
-
-        var ii = 0,
-            i, len,
-            y, len2;
-        for (i = 0, len = _parts.length; i < len; i++) {
-            _words = _parts[i].split(' ');
-            if (i > 0) {
-                documentFragment.appendChild(_settings.partEl());
-            }
-            /* Append each word */
-            for (y = 0, len2 = _words.length; y < len2; y++) {
-                documentFragment.appendChild(buildWord(_words[y], ii++));
-            }
+        var ii = 0;
+        for (var i = 0, len = _words.length; i < len; i++) {
+            _newHTML += callBuildWord(_words[i], ii++);
         }
 
-        el.appendChild(documentFragment);
+        el.innerHTML = _newHTML;
     };
 
     var readyWords = function() {
@@ -73,18 +58,49 @@ var vanillaAnimateWords = function(el, settings) {
       Helpers
     ---------------------------------------------------------- */
 
-    var buildWord = function(wordContent, ii) {
-        var $elWrapper = document.createElement(_settings.wrapEl),
-            $tmpEl = document.createElement(_settings.innerEl);
-        /* Build element */
-        $tmpEl.className = 'vawjs-word';
-        $tmpEl.innerHTML = wordContent + ' ';
-        $tmpEl.style.animationDelay = (ii * _settings.delay) + 's';
-        /* Build wrapper */
-        $elWrapper.className = 'vawjs-word-wrapper';
-        $elWrapper.appendChild($tmpEl);
-        return $elWrapper;
+    var callBuildWord = function(wordContent, ii) {
+
+        var _html = '';
+        var rawString = wordContent.replace(/(<([^>]+)>)/gi, '').trim(),
+            htmlString = wordContent.replace(rawString, '').trim();
+
+        /* No HTML */
+        if (!htmlString) {
+            return buildWord(wordContent, ii);
+        }
+
+        /* Only HTML */
+        if (htmlString && !rawString) {
+            return htmlString.trim();
+        }
+
+        /* HTML & Words */
+        var _words = splitSpaces(wordContent);
+        for (var i = 0, len = _words.length; i < len; i++) {
+            _html += callBuildWord(_words[i], ii);
+        }
+
+        return _html;
     };
+
+    var buildWord = function(wordContent, ii) {
+
+        var _html = '<' + _settings.wrapEl + ' class="vawjs-word-wrapper">';
+        _html += '<' + _settings.innerEl + ' class="vawjs-word" style="animation-delay:' + (ii * _settings.delay) + 's">';
+        _html += wordContent;
+        _html += '</' + _settings.innerEl + '>';
+        _html += '</' + _settings.wrapEl + '>';
+
+        return _html;
+    };
+
+    function splitSpaces(string) {
+        string = string.trim();
+        var words = string.replace('>', '> ').replace('<', ' <').replace('</', ' </').split(' ');
+        return words.filter(function(el) {
+            return el;
+        });
+    }
 
     /* ----------------------------------------------------------
       Init script

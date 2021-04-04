@@ -8,15 +8,16 @@ body {
     box-sizing: border-box;
     margin: auto;
     padding: 0 1em 1em;
-    max-width: 600px;
+    max-width: 650px;
 }
 
 /* ----------------------------------------------------------
   Helpers
 ---------------------------------------------------------- */
 
-script.script-visible {
+.script-visible {
     display: block;
+    margin-top: 1em;
     padding: 0.5em;
     border: 1px solid #CCC;
     font-family: monospace;
