@@ -49,7 +49,6 @@ var vanillaAnimateWords = function(el, settings) {
                 });
                 _HTML = _HTML.replace(_matches[i], _tmpTag);
             }
-            console.log(_HTML);
         }());
 
         /* Extract words */

@@ -1,6 +1,6 @@
 {
   "name": "vanillaanimatewords",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A Script To Beautifully Animate Words, helped by CSS",
   "main": "js/vanilla-animate-words.js",
   "scripts": {},
