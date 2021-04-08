@@ -1,6 +1,6 @@
 {
   "name": "vanillaanimatewords",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A Script To Beautifully Animate Words, helped by CSS",
   "main": "js/vanilla-animate-words.js",
   "scripts": {},
@@ -15,6 +15,7 @@
   },
   "homepage": "https://github.com/JavaScriptUtilities/vanillaAnimateWords#readme",
   "devDependencies": {
+    "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-minify": "^3.1.0"
   }

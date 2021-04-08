@@ -1,6 +1,6 @@
 /*
  * Plugin Name: Vanilla Animate Words
- * Version: 0.3.0
+ * Version: 0.4.0
  * Plugin URL: https://github.com/JavaScriptUtilities/vanillaAnimateWords
  * JavaScriptUtilities Vanilla Animate Words may be freely distributed under the MIT license.
  */
@@ -34,8 +34,26 @@ var vanillaAnimateWords = function(el, settings) {
 
     var splitWords = function() {
 
+        var _HTML = el.innerHTML,
+            _sideTags = [];
+
+        /* Extract tags content to avoid problems with spaces */
+        (function() {
+            var _matches = _HTML.match(/<([^>]*?)>/gi),
+                _tmpTag;
+            for (var i = 0, len = _matches.length; i < len; i++) {
+                _tmpTag = '<__tmptag' + i + '__>';
+                _sideTags.push({
+                    'tag': _tmpTag,
+                    'original': _matches[i],
+                });
+                _HTML = _HTML.replace(_matches[i], _tmpTag);
+            }
+            console.log(_HTML);
+        }());
+
         /* Extract words */
-        var _words = splitSpaces(el.innerHTML),
+        var _words = splitSpaces(_HTML),
             _newHTML = '';
 
         /* Purge element content */
@@ -46,6 +64,13 @@ var vanillaAnimateWords = function(el, settings) {
         for (var i = 0, len = _words.length; i < len; i++) {
             _newHTML += callBuildWord(_words[i], ii++);
         }
+
+        /* Reset tags content */
+        (function() {
+            for (var i = 0, len = _sideTags.length; i < len; i++) {
+                _newHTML = _newHTML.replace(_sideTags[i].tag, _sideTags[i].original);
+            }
+        }());
 
         el.innerHTML = _newHTML;
     };

@@ -3,10 +3,21 @@
 ---------------------------------------------------------- */
 
 const gulp = require('gulp');
+const del = require('del');
 const {
     series
 } = gulp;
 const minify = require("gulp-minify");
+
+/* ----------------------------------------------------------
+  Del
+---------------------------------------------------------- */
+
+function clean() {
+    return del("js/*.min.js");
+}
+
+exports.clean = clean;
 
 /* ----------------------------------------------------------
   Minify
@@ -30,4 +41,4 @@ exports.minifyjs = minifyjs;
   Default tasks
 ---------------------------------------------------------- */
 
-exports.default = series(minifyjs);
+exports.default = series(clean,minifyjs);
