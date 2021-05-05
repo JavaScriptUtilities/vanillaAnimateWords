@@ -1,6 +1,6 @@
 /*
  * Plugin Name: Vanilla Animate Words
- * Version: 0.4.2
+ * Version: 0.5.0
  * Plugin URL: https://github.com/JavaScriptUtilities/vanillaAnimateWords
  * JavaScriptUtilities Vanilla Animate Words may be freely distributed under the MIT license.
  */
@@ -41,7 +41,7 @@ var vanillaAnimateWords = function(el, settings) {
         (function() {
             var _matches = _HTML.match(/<([^>]*?)>/gi),
                 _tmpTag;
-            if(!_matches){
+            if (!_matches) {
                 return;
             }
             for (var i = 0, len = _matches.length; i < len; i++) {
@@ -79,6 +79,19 @@ var vanillaAnimateWords = function(el, settings) {
 
     var readyWords = function() {
         el.style.height = '';
+
+        /* Change delay by lines */
+        if (el.getAttribute('data-vawjs-lines')) {
+            var maxOffset = 0,
+                offsetLevel = 0;
+            el.querySelectorAll('.vawjs-word').forEach(function($el) {
+                if ($el.offsetTop > maxOffset) {
+                    maxOffset = $el.offsetTop;
+                    offsetLevel++;
+                }
+                $el.style.animationDelay = ((offsetLevel - 1) * _settings.delay) + 's';
+            });
+        }
     };
 
     /* ----------------------------------------------------------

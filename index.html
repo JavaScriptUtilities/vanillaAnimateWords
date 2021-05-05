@@ -4,8 +4,8 @@
         <meta charset="UTF-8" />
         <title>Vanilla Animate Words</title>
         <link rel="stylesheet" type="text/css" href="css/base.css" />
-        <link rel="stylesheet" type="text/css" href="css/vanilla-animate-words.css?v=0.4.2" />
-        <script src="js/vanilla-animate-words.min.js?v=0.4.2"></script>
+        <link rel="stylesheet" type="text/css" href="css/vanilla-animate-words.css?v=0.5.0" />
+        <script src="js/vanilla-animate-words.min.js?v=0.5.0"></script>
         <meta name="viewport" content="width=device-width" />
     </head>
     <body>
@@ -14,15 +14,20 @@
         <h2>Fade-in words</h2>
         <p data-vawjs-anim="fadein"><strong class="boop">Here’s</strong> to the crazy ones.<br />The <strong>misfits.</strong> The rebels. <strong>The troublemakers.</strong> The round pegs in the square holes. The ones who see things differently. They’re not fond of rules. And they have no respect for the status quo. You can quote them, disagree with them, glorify or vilify them. About the only thing you can’t do is ignore them. Because they change things. They push the human race forward. And while some may see them as <em>the crazy ones,</em> we see genius. Because the people who are crazy enough to think they can change the world are the ones who do.</p>
         <h2>Slide-up words</h2>
-        <p data-vawjs-anim="slideup"><strong class="boop">Here’s</strong> to the crazy ones.<br />The <strong>misfits.</strong> The rebels. <strong>The troublemakers.</strong> The round pegs in the square holes. The ones who see things differently. They’re not fond of rules. And they have no respect for the status quo. You can quote them, disagree with them, glorify or vilify them. About the only thing you can’t do is ignore them. Because they change things. They push the human race forward. And while some may see them as <em>the crazy ones,</em> we see genius. Because the people who are crazy enough to think they can change the world are the ones who do.</p>
-         <h2>Slow slide-up words </h2>
-         <p data-vawjs-delay="150" data-vawjs-anim="slideup">
-             The world needs dreamers and the world needs doers. But above all, the world needs dreamers who do — Sarah Ban Breathnach.
+        <p data-vawjs-anim="slideup">
+            <strong class="boop">Here’s</strong> to the crazy ones.<br /> The <strong>misfits.</strong> The rebels. <strong>The troublemakers.</strong> The round pegs in the square holes. The ones who see things differently. They’re not fond of rules. And they have no respect for the status quo. You can quote them, disagree with them, glorify or vilify them. About the only thing you can’t do is ignore them. Because they change things. They push the human race forward. And while some may see them as <em>the crazy ones,</em> we see genius. Because the people who are crazy enough to think they can change the world are the ones who do.
         </p>
+        <h2>Slide-up lines</h2>
+        <p data-vawjs-anim="slideup" data-vawjs-lines="1" data-vawjs-delay="150">
+            <strong class="boop">Here’s</strong> to the crazy ones.<br /> The <strong>misfits.</strong> The rebels. <strong>The troublemakers.</strong> The round pegs in the square holes. The ones who see things differently. They’re not fond of rules. And they have no respect for the status quo. You can quote them, disagree with them, glorify or vilify them. About the only thing you can’t do is ignore them. Because they change things. They push the human race forward. And while some may see them as <em>the crazy ones,</em> we see genius. Because the people who are crazy enough to think they can change the world are the ones who do.
+        </p>
+        <h2>Slow slide-up words</h2>
+        <p data-vawjs-delay="150" data-vawjs-anim="slideup">The world needs dreamers and the world needs doers. But above all, the world needs dreamers who do — Sarah Ban Breathnach.</p>
         <h2>How to trigger</h2>
 
 <div class="script-visible">&#x3C;p data-vawjs-anim=&#x22;fadein&#x22;&#x3E;Here&#x2019;s to the crazy ones.&#x3C;/p&#x3E;
 &#x3C;p data-vawjs-anim=&#x22;slideup&#x22;&#x3E;Here&#x2019;s to the crazy ones.&#x3C;/p&#x3E;
+&#x3C;p data-vawjs-anim=&#x22;slideup&#x22; data-vawjs-delay=&#x22;150&#x22; data-vawjs-lines=&#x22;lines&#x22;&#x3E;Here&#x2019;s to ...&#x3C;/p&#x3E;
 &#x3C;p data-vawjs-delay=&#x22;150&#x22; data-vawjs-anim=&#x22;slideup&#x22;&#x3E;Here&#x2019;s to ...&#x3C;/p&#x3E; </div>
 <script class="script-visible" autocorrect="off" contenteditable>document.querySelectorAll("[data-vawjs-anim]").forEach(function($item) {
     new vanillaAnimateWords($item);
