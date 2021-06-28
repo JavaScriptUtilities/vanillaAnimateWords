@@ -1,6 +1,6 @@
 /*
  * Plugin Name: Vanilla Animate Words
- * Version: 0.5.0
+ * Version: 0.5.1
  * Plugin URL: https://github.com/JavaScriptUtilities/vanillaAnimateWords
  * JavaScriptUtilities Vanilla Animate Words may be freely distributed under the MIT license.
  */
